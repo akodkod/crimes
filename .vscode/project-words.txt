@@ -1,2 +1,4 @@
 elif
+freefly
+freeflying
 onready

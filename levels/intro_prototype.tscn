@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_bvhgc"]
 [ext_resource type="VoxelGIData" uid="uid://dlecw31n1oxvc" path="res://levels/intro_prototype.voxelgi_data.res" id="2_vo67r"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_b7vux"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_qhghp"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_qhghp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -22,6 +25,19 @@ fog_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(1, 0.7137255, 0.30980393, 1)
 
+[sub_resource type="Resource" id="Resource_xf0ox"]
+script = ExtResource("4_qhghp")
+transition = 7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf0ox"]
+albedo_color = Color(0.61, 0.3355, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhghp"]
+albedo_color = Color(0.6117647, 0.3372549, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgwn6"]
+albedo_color = Color(0.61, 0.3355, 0, 1)
+
 [node name="IntroPrototype" type="Node3D" unique_id=2129727821]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1891637663]
@@ -33,24 +49,85 @@ transform = Transform3D(0.25881913, -0.8365164, 0.48296282, 4.470349e-08, 0.4999
 shadow_enabled = true
 
 [node name="Ground" type="CSGBox3D" parent="." unique_id=2107676185]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.5, -0.25, -1.09278474e-07)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25.5, -0.25, -1.3113416e-06)
 use_collision = true
-size = Vector3(12, 0.5, 18.5)
+size = Vector3(16, 0.5, 73.5)
 
 [node name="Field" type="CSGBox3D" parent="." unique_id=434651340]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0.75, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.75, 0.75, 1.2020632e-07)
 material_override = SubResource("StandardMaterial3D_ig7tw")
-size = Vector3(12, 1.5, 3.5)
+size = Vector3(16, 1.5, 9)
 
 [node name="Player" parent="." unique_id=191217461 node_paths=PackedStringArray("camera") instance=ExtResource("1_bvhgc")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0)
-camera = NodePath("Camera3D")
+camera = NodePath("../Camera3D")
 
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1160275195]
-transform = Transform3D(1.3113416e-07, -0.34202015, 0.9396927, 0, 0.9396927, 0.34202015, -1, -4.4850523e-08, 1.232258e-07, 5.305, 2.89, 0)
-fov = 55.0
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1160275195]
+physics_interpolation_mode = 1
+transform = Transform3D(1.0000004, 0, 0, 0, 0.9283831, 0.37135327, 0, -0.37135327, 0.9283831, 0, 2.8567662, 4.6419153)
+top_level = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=796873734]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_qhghp")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="VoxelGI" type="VoxelGI" parent="." unique_id=132071623]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.75, 0, 0)
 size = Vector3(41.5, 20, 20)
 data = ExtResource("2_vo67r")
+
+[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=755049274 node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(1.0000004, 0, 0, 0, 0.9283831, 0.37135327, 0, -0.37135327, 0.9283831, 0, 2.8567662, 4.6419153)
+top_level = true
+script = ExtResource("3_b7vux")
+follow_mode = 5
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_xf0ox")
+tween_on_load = false
+follow_offset = Vector3(0, 1, 0)
+follow_damping = true
+follow_axis_lock = 3
+follow_distance = 5.0
+spring_length = 5.0
+look_at_offset = Vector3(0, 1, 0)
+align_transform_with_view = Callable()
+align_position_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Fence" type="CSGCombiner3D" parent="." unique_id=283896769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.209864, 2, 0.307209)
+material_override = SubResource("StandardMaterial3D_xf0ox")
+use_collision = true
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Fence" unique_id=2092822004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -2)
+material_override = SubResource("StandardMaterial3D_qhghp")
+radius = 0.1
+height = 3.0
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Fence" unique_id=879137912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 2)
+material_override = SubResource("StandardMaterial3D_qhghp")
+radius = 0.1
+height = 3.0
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Fence" unique_id=1885987761]
+transform = Transform3D(1, 0, 0, 0, 0.08715569, -0.9961947, 0, 0.9961947, 0.08715569, 0, 0.35000002, 0)
+material_override = SubResource("StandardMaterial3D_qhghp")
+radius = 0.1
+height = 4.0
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Fence" unique_id=807090800]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.79999995, 0)
+material_override = SubResource("StandardMaterial3D_qhghp")
+radius = 0.1
+height = 4.0
+
+[node name="Tree" type="CSGCylinder3D" parent="." unique_id=126583838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.016766, 4.4999995, -3.4111004)
+material_override = SubResource("StandardMaterial3D_bgwn6")
+radius = 1.0
+height = 9.0

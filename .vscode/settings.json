@@ -8,5 +8,13 @@
     "*.gd": "${capture}.gd.uid",
     "tsconfig.json": "tsconfig.*.json",
     "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock"
+  },
+  "godotFormatter.enabled": true,
+  "godotFormatter.enableLinter": true,
+  "godotFormatter.useSpaces": false,
+  "godotFormatter.reorderCode": true,
+  "godotFormatter.linterMaxLineLength": 120,
+  "files.exclude": {
+    "**/*.uid": true,
   }
 }

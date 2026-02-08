@@ -7,7 +7,7 @@ extends CharacterBody3D
 ## The camera to which movement is relative
 @export var camera: Camera3D
 ## Rotate to movement direction when moving
-@export var should_rotate_to_movement_direction: bool = true
+@export var rotate_to_movement: bool = true
 
 ## Can we move around?
 @export var can_move: bool = true
@@ -19,7 +19,6 @@ extends CharacterBody3D
 @export var can_sprint: bool = false
 ## Can we press to enter freefly mode (noclip)?
 @export var can_freefly: bool = false
-
 
 @export_group("Speeds")
 ## Look around rotation speed.
@@ -118,6 +117,13 @@ func _physics_process(delta: float) -> void:
 			move_dir = Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, camera.global_rotation.y)
 		else:
 			move_dir = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+		if rotate_to_movement and move_dir.length() > 0.1:
+			var target_rotation = atan2(-move_dir.x, -move_dir.z)
+			rotation.y = lerp_angle(rotation.y, target_rotation, 0.1)
+
+			# Sync look rotation to new facing direction
+			look_rotation.y = rotation.y
 
 		if move_dir:
 			velocity.x = move_dir.x * move_speed

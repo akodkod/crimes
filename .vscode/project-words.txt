@@ -1,4 +1,10 @@
+AABB
 elif
 freefly
 freeflying
+hyperkey
+Kodkod
+lerp
 onready
+reparent
+xform

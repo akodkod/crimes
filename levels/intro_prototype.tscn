@@ -1,26 +1,19 @@
 [gd_scene format=3 uid="uid://chx5hskwe6e45"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_bvhgc"]
-[ext_resource type="VoxelGIData" uid="uid://dlecw31n1oxvc" path="res://levels/intro_prototype.voxelgi_data.res" id="2_vo67r"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_b7vux"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_qhghp"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_qhghp"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7vux"]
 
-[sub_resource type="Sky" id="Sky_ig7tw"]
-sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
+[sub_resource type="Sky" id="Sky_b7vux"]
+sky_material = SubResource("ProceduralSkyMaterial_b7vux")
 
-[sub_resource type="Environment" id="Environment_0xm2m"]
+[sub_resource type="Environment" id="Environment_b7vux"]
 background_mode = 2
-sky = SubResource("Sky_ig7tw")
-tonemap_mode = 2
-glow_enabled = true
-fog_enabled = true
-
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ig7tw"]
+sky = SubResource("Sky_b7vux")
+ambient_light_source = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(1, 0.7137255, 0.30980393, 1)
@@ -40,13 +33,12 @@ albedo_color = Color(0.61, 0.3355, 0, 1)
 
 [node name="IntroPrototype" type="Node3D" unique_id=2129727821]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1891637663]
-environment = SubResource("Environment_0xm2m")
-camera_attributes = SubResource("CameraAttributesPhysical_ig7tw")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1589351551]
+environment = SubResource("Environment_b7vux")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=469572618]
-transform = Transform3D(0.25881913, -0.8365164, 0.48296282, 4.470349e-08, 0.49999988, 0.86602545, -0.9659258, -0.22414394, 0.12940958, 0, 4, 0)
-shadow_enabled = true
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=357480769]
+transform = Transform3D(0.70710677, -0.35355335, 0.6123725, -9.313226e-08, 0.8660253, 0.5, -0.7071068, -0.35355338, 0.61237246, 0, 4.5, 0)
+light_energy = 0.5
 
 [node name="Ground" type="CSGBox3D" parent="." unique_id=2107676185]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25.5, -0.25, -1.3113416e-06)
@@ -72,11 +64,6 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("5_qhghp")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
-
-[node name="VoxelGI" type="VoxelGI" parent="." unique_id=132071623]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.75, 0, 0)
-size = Vector3(41.5, 20, 20)
-data = ExtResource("2_vo67r")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=755049274 node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(1.0000004, 0, 0, 0, 0.9283831, 0.37135327, 0, -0.37135327, 0.9283831, 0, 2.8567662, 4.6419153)

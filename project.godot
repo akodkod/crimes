@@ -17,9 +17,7 @@ config/icon="uid://c8esn7qk6kd3n"
 
 [autoload]
 
-CsgToolkitAutoload="*uid://w8ad8q4lneis"
 PhantomCameraManager="*uid://duq6jhf6unyis"
-DebugMenu="*uid://cggqb75a8w8r"
 
 [debug]
 
@@ -33,7 +31,7 @@ gdscript/warnings/missing_await=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/csg_toolkit/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/nine_lives_tools/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/nine_lives_tools/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 

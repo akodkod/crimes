@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://deteovbyj0qkq"]
+
+[node name="Dev" type="Node3D" unique_id=1135423676]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1324427649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+size = Vector3(20, 0.5, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=249409480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9177985, 0.5, -3.1867466)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1692637746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.122243, 1.499999, 4.074916)
+radius = 1.0
+radial_segments = 24
+rings = 24
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1122213634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8163381, 1, -1.390825)
+height = 4.0
+sides = 24
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1270290369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.183662, 1, -2.390825)
+radius = 1.0
+sides = 24
+cone = true
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="." unique_id=743762249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1129313, 1.75, -2.3918943)
+sides = 32
+ring_sides = 12

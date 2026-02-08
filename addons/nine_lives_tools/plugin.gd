@@ -27,9 +27,9 @@ func _exit_tree() -> void:
 	_create_at_cursor = null
 
 
-# Required for _forward_3d_gui_input to be called.
-func _handles(_object: Object) -> bool:
-	return true
+# Only handle Node3D so we don't interfere with resource inspectors (Sky, etc.).
+func _handles(object: Object) -> bool:
+	return object is Node3D
 
 
 func _forward_3d_gui_input(camera: Camera3D, event: InputEvent) -> int:

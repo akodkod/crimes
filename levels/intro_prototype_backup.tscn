@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://chx5hskwe6e45"]
 
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_bvhgc"]
-[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_b7vux"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_qhghp"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_qhghp"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_b2kp6"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_ecrx6"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_h6hxs"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_us81t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7vux"]
 
@@ -19,7 +19,7 @@ ambient_light_source = 3
 albedo_color = Color(1, 0.7137255, 0.30980393, 1)
 
 [sub_resource type="Resource" id="Resource_xf0ox"]
-script = ExtResource("4_qhghp")
+script = ExtResource("4_us81t")
 transition = 7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf0ox"]
@@ -50,7 +50,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.7
 material_override = SubResource("StandardMaterial3D_ig7tw")
 size = Vector3(16, 1.5, 9)
 
-[node name="Player" parent="." unique_id=191217461 node_paths=PackedStringArray("camera") instance=ExtResource("1_bvhgc")]
+[node name="Player" parent="." unique_id=191217461 node_paths=PackedStringArray("camera") instance=ExtResource("1_b2kp6")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0, 0, 0)
 camera = NodePath("../Camera3D")
 
@@ -62,13 +62,13 @@ top_level = true
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=796873734]
 process_priority = 300
 process_physics_priority = 300
-script = ExtResource("5_qhghp")
+script = ExtResource("2_ecrx6")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=755049274 node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(1.0000004, 0, 0, 0, 0.9283831, 0.37135327, 0, -0.37135327, 0.9283831, 0, 2.8567662, 4.6419153)
 top_level = true
-script = ExtResource("3_b7vux")
+script = ExtResource("3_h6hxs")
 follow_mode = 5
 follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_xf0ox")

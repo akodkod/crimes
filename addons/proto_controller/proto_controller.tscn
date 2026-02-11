@@ -1,13 +1,11 @@
 [gd_scene format=4 uid="uid://bs72ogkvdd7d6"]
 
 [ext_resource type="Script" uid="uid://cnele7jjv7g3o" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
-albedo_color = Color(0.3145, 0.5733249, 0.85, 1)
+[ext_resource type="Material" uid="uid://cagjtecls58vh" path="res://dev/materials/dev_character.tres" id="2_wr06p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ucva2"]
-radius = 0.4
-height = 1.8
+radius = 0.32
+height = 1.5
 rings = 16
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_g2uji"]
@@ -58,8 +56,8 @@ _surfaces = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iof21"]
-radius = 0.4
-height = 1.8
+radius = 0.32
+height = 1.5
 
 [node name="ProtoController" type="CharacterBody3D" unique_id=191217461]
 script = ExtResource("1_ucva2")
@@ -72,13 +70,13 @@ input_back = "move_backward"
 input_jump = "jump"
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=1440783139]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-material_override = SubResource("StandardMaterial3D_iof21")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+material_override = ExtResource("2_wr06p")
 gi_mode = 2
 mesh = SubResource("CapsuleMesh_ucva2")
 
 [node name="RightEye" type="MeshInstance3D" parent="Body" unique_id=2038220813]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10265052, 0.47549033, -0.35132492)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.10265052, 0.47549033, -0.29217756)
 mesh = SubResource("ArrayMesh_g2uji")
 
 [node name="RightEyePupil" type="MeshInstance3D" parent="Body/RightEye" unique_id=933010355]
@@ -87,7 +85,7 @@ material_override = SubResource("StandardMaterial3D_g2uji")
 mesh = SubResource("ArrayMesh_wr06p")
 
 [node name="LeftEye" type="MeshInstance3D" parent="Body" unique_id=634275295]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09049022, 0.47549033, -0.35132492)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.09049022, 0.47549033, -0.29217756)
 mesh = SubResource("ArrayMesh_5hfox")
 
 [node name="LeftEyePupil" type="MeshInstance3D" parent="Body/LeftEye" unique_id=1651698900]
@@ -96,8 +94,8 @@ material_override = SubResource("StandardMaterial3D_g2uji")
 mesh = SubResource("ArrayMesh_6dqce")
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=1054030087]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CapsuleShape3D_iof21")
 
 [node name="Head" type="Node3D" parent="." unique_id=734341145]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2217014, 0)

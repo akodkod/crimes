@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cs0ayb5d65s6c"]
+
+[ext_resource type="Script" uid="uid://deob8qyeshx3l" path="res://features/player/player.gd" id="1_sjcu7"]
+[ext_resource type="Material" uid="uid://cagjtecls58vh" path="res://dev/materials/dev_character.tres" id="2_emvbc"]
+[ext_resource type="Material" uid="uid://cilhp7qb5gpv8" path="res://dev/materials/dev_grid_blue.tres" id="3_emvbc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sjcu7"]
+radius = 0.32
+height = 1.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fcb3x"]
+radius = 0.06
+height = 0.32
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_emvbc"]
+radius = 0.32
+height = 1.5
+
+[node name="Player" type="CharacterBody3D" unique_id=1089198176]
+script = ExtResource("1_sjcu7")
+metadata/_custom_type_script = "uid://deob8qyeshx3l"
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=800375553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+material_override = ExtResource("2_emvbc")
+mesh = SubResource("CapsuleMesh_sjcu7")
+
+[node name="Eyes" type="MeshInstance3D" parent="Body" unique_id=904334417]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.29999998, 0.35, -1.5298985e-08)
+material_override = ExtResource("3_emvbc")
+mesh = SubResource("CapsuleMesh_fcb3x")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=447937394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_emvbc")

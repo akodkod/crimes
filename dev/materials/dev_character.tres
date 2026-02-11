@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cagjtecls58vh"]
+
+[ext_resource type="Shader" uid="uid://b6cd6e2p84uo3" path="res://dev/shaders/dev_grid.gdshader" id="1_fu8qu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fu8qu")
+shader_parameter/base_color = Color(0.72156864, 0.58431375, 0.24705882, 1)
+shader_parameter/overlay_color = Color(0.72156864, 0.72156864, 0.72156864, 0.101960786)
+shader_parameter/grid_line_width = 0.05
+shader_parameter/world_oriented = false

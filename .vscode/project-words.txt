@@ -1,10 +1,13 @@
 AABB
 elif
+fract
 freefly
 freeflying
+fwidth
 hyperkey
 Kodkod
 lerp
 onready
 reparent
+smoothstep
 xform

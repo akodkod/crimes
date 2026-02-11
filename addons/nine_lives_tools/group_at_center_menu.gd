@@ -23,6 +23,12 @@ func _popup_menu(_paths: PackedStringArray) -> void:
 	add_context_menu_item("Group at Center", _on_group_at_center, icon)
 
 
+## Called from shortcut / command palette – grabs the current selection.
+func group_selected_nodes() -> void:
+	var sel := EditorInterface.get_selection()
+	_on_group_at_center(sel.get_selected_nodes())
+
+
 func _on_group_at_center(nodes: Array) -> void:
 	var scene_root := EditorInterface.get_edited_scene_root()
 	if scene_root == null:

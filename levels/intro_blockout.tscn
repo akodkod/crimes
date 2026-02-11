@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c41sav6ofeure"]
+
+[ext_resource type="Material" uid="uid://dqigycreeigoy" path="res://dev/materials/dev_grid_lighter_black.tres" id="1_xmkty"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_7s63d"]
+
+[node name="IntroBlockout" type="Node3D" unique_id=1721034235]
+
+[node name="ProtoController" parent="." unique_id=191217461 instance=ExtResource("2_7s63d")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 2, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1850783892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.019882, -0.5, -0.004327059)
+material_override = ExtResource("1_xmkty")
+size = Vector3(74, 1, 40)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=22373972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 10, 0)
+material_override = ExtResource("1_xmkty")
+size = Vector3(10, 20, 40)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=2058230070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+size = Vector3(2, 2, 4)

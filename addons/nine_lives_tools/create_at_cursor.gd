@@ -133,10 +133,19 @@ func _do_create_node(
 	if node is Node3D:
 		var node3d := node as Node3D
 		# Place the node so the bottom of its bounding box sits on the surface.
-		node3d.global_position = hit_position
+		# Respect the editor's translate-snap setting when enabled.
+		node3d.global_position = _snap_position(hit_position)
 		node3d.global_position += Vector3(0.0, _get_bottom_offset(node3d), 0.0)
 	EditorInterface.get_selection().clear()
 	EditorInterface.get_selection().add_node(node)
+
+
+## Snaps a position to the editor's 3D translate grid when snapping is enabled.
+func _snap_position(pos: Vector3) -> Vector3:
+	if EditorInterface.is_node_3d_snap_enabled():
+		var snap := EditorInterface.get_node_3d_translate_snap()
+		pos = pos.snapped(Vector3(snap, snap, snap))
+	return pos
 
 
 ## Returns how far to shift the node upward so its AABB bottom sits on the hit point.

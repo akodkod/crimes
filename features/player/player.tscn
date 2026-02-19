@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://deob8qyeshx3l" path="res://features/player/player.gd" id="1_sjcu7"]
 [ext_resource type="Material" uid="uid://cagjtecls58vh" path="res://dev/materials/dev_character.tres" id="2_emvbc"]
 [ext_resource type="Material" uid="uid://cilhp7qb5gpv8" path="res://dev/materials/dev_grid_blue.tres" id="3_emvbc"]
+[ext_resource type="Script" uid="uid://44ggl6xp08uc" path="res://features/player/player_state_machine.gd" id="4_i250s"]
+[ext_resource type="Script" uid="uid://c1wpf3iw14u3" path="res://features/player/player_ground_state.gd" id="5_7mbft"]
+[ext_resource type="Script" uid="uid://12h734ckrqwt" path="res://features/player/player_air_state.gd" id="6_kt1oa"]
+[ext_resource type="Script" uid="uid://dwxal5wv1l82u" path="res://features/player/player_climb_up_state.gd" id="7_k34i2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sjcu7"]
 radius = 0.32
@@ -33,3 +37,20 @@ mesh = SubResource("CapsuleMesh_fcb3x")
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=447937394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CapsuleShape3D_emvbc")
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1979617271 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_i250s")
+initial_state = NodePath("PlayerGroundState")
+metadata/_custom_type_script = "uid://44ggl6xp08uc"
+
+[node name="PlayerGroundState" type="Node" parent="PlayerStateMachine" unique_id=27916203]
+script = ExtResource("5_7mbft")
+metadata/_custom_type_script = "uid://c1wpf3iw14u3"
+
+[node name="PlayerAirState" type="Node" parent="PlayerStateMachine" unique_id=934979661]
+script = ExtResource("6_kt1oa")
+metadata/_custom_type_script = "uid://12h734ckrqwt"
+
+[node name="PlayerClimbUpState" type="Node" parent="PlayerStateMachine" unique_id=150008184]
+script = ExtResource("7_k34i2")
+metadata/_custom_type_script = "uid://dwxal5wv1l82u"

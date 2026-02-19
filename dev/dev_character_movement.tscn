@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://do7f4rt671wcu" path="res://dev/materials/dev_grid_blueish_gray.tres" id="6_115o4"]
 [ext_resource type="FontFile" uid="uid://co8hcfbjatrhk" path="res://fonts/inter/Inter-SemiBold.woff2" id="7_dvlej"]
 [ext_resource type="PackedScene" uid="uid://cs0ayb5d65s6c" path="res://features/player/player.tscn" id="7_gdd0e"]
+[ext_resource type="Material" uid="uid://6v74x6srxt3a" path="res://dev/materials/dev_grid_yellow.tres" id="8_gdd0e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0y6fi"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -40,11 +41,12 @@ use_collision = true
 size = Vector3(100, 1, 100)
 
 [node name="Player" parent="." unique_id=1089198176 node_paths=PackedStringArray("camera") instance=ExtResource("7_gdd0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 camera = NodePath("../PlayerCamera")
 
 [node name="PlayerCamera" type="Camera3D" parent="." unique_id=153983957]
 physics_interpolation_mode = 1
-transform = Transform3D(0.99999917, 0, 0, 0, 0.92902046, 0.36982995, 0, -0.36982995, 0.92902046, 0, 2.8491497, 4.6451025)
+transform = Transform3D(0.99999917, 0, 0, 0, 0.92902046, 0.36982995, 0, -0.36982995, 0.92902046, 15, 2.8491497, 4.6451025)
 top_level = true
 fov = 55.0
 
@@ -55,7 +57,7 @@ script = ExtResource("3_s6c1t")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1207933375 node_paths=PackedStringArray("follow_target", "look_at_target")]
-transform = Transform3D(0.99999917, 0, 0, 0, 0.92902046, 0.36982995, 0, -0.36982995, 0.92902046, 0, 2.8491497, 4.6451025)
+transform = Transform3D(0.99999917, 0, 0, 0, 0.92902046, 0.36982995, 0, -0.36982995, 0.92902046, 15, 2.8491497, 4.6451025)
 top_level = true
 script = ExtResource("3_5xfut")
 follow_mode = 5
@@ -74,19 +76,98 @@ align_position_with_view = Callable()
 align_rotation_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="ClimbableBox" type="CSGBox3D" parent="." unique_id=560318717]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.75, 0)
+[node name="Climbable0p3m" type="CSGBox3D" parent="." unique_id=560318717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.006748, 0.15, 0)
 material_override = ExtResource("6_115o4")
 use_collision = true
-size = Vector3(2, 1.5, 2)
+collision_layer = 3
+size = Vector3(2, 0.3, 2)
 
-[node name="Label3D" type="Label3D" parent="ClimbableBox" unique_id=818622098]
+[node name="Label3D" type="Label3D" parent="Climbable0p3m" unique_id=818622098]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012499988, 1.01)
-text = "Climbable"
+text = "Climbable 0.3m
+"
+font = ExtResource("7_dvlej")
+
+[node name="Climbable0p5m" type="CSGBox3D" parent="." unique_id=1503113610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.4, 0)
+material_override = ExtResource("6_115o4")
+use_collision = true
+collision_layer = 3
+size = Vector3(2, 0.8, 2)
+
+[node name="Label3D" type="Label3D" parent="Climbable0p5m" unique_id=51458535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012499988, 1.01)
+text = "Climbable 0.5m"
+font = ExtResource("7_dvlej")
+
+[node name="Climbable1m" type="CSGBox3D" parent="." unique_id=1282288063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0.9000002, 0)
+material_override = ExtResource("6_115o4")
+use_collision = true
+collision_layer = 3
+size = Vector3(2, 1.8, 2)
+
+[node name="Label3D" type="Label3D" parent="Climbable1m" unique_id=2106502942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012499988, 1.01)
+text = "Climbable 1m
+"
+font = ExtResource("7_dvlej")
+
+[node name="Climbable1p5m" type="CSGBox3D" parent="." unique_id=505563423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1.6500002, 0)
+material_override = ExtResource("6_115o4")
+use_collision = true
+collision_layer = 3
+size = Vector3(2, 3.3, 2)
+
+[node name="Label3D" type="Label3D" parent="Climbable1p5m" unique_id=1972784613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012499988, 1.01)
+text = "Climbable 1.5m
+"
+font = ExtResource("7_dvlej")
+
+[node name="Climbable2m" type="CSGBox3D" parent="." unique_id=593217302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 2.65, 0)
+material_override = ExtResource("6_115o4")
+use_collision = true
+collision_layer = 3
+size = Vector3(2, 5.3, 2)
+
+[node name="Label3D" type="Label3D" parent="Climbable2m" unique_id=1681429299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012499988, 1.01)
+text = "Climbable 2m
+"
+font = ExtResource("7_dvlej")
+
+[node name="Climbable2p1m" type="CSGBox3D" parent="." unique_id=514149312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 3.7, 0)
+material_override = ExtResource("6_115o4")
+use_collision = true
+collision_layer = 3
+size = Vector3(2, 7.4, 2)
+
+[node name="Label3D" type="Label3D" parent="Climbable2p1m" unique_id=278295184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012499988, 1.01)
+text = "Climbable 2.1m
+"
+font = ExtResource("7_dvlej")
+
+[node name="Climbable2p5m" type="CSGBox3D" parent="." unique_id=732568992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 4.95, 0)
+material_override = ExtResource("6_115o4")
+use_collision = true
+collision_layer = 3
+size = Vector3(2, 9.9, 2)
+
+[node name="Label3D" type="Label3D" parent="Climbable2p5m" unique_id=424632949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012499988, 1.01)
+text = "Climbable 2.5m
+"
 font = ExtResource("7_dvlej")
 
 [node name="JumpableBox" type="CSGBox3D" parent="." unique_id=241786300]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.375, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.375, 0)
 material_override = ExtResource("6_115o4")
 use_collision = true
 size = Vector3(2, 0.75, 2)
@@ -95,3 +176,25 @@ size = Vector3(2, 0.75, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012499988, 1.01)
 text = "Jumpable"
 font = ExtResource("7_dvlej")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1667571755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 0)
+material_override = ExtResource("6_115o4")
+use_collision = true
+size = Vector3(8, 1, 2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1601493357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0)
+material_override = ExtResource("6_115o4")
+use_collision = true
+size = Vector3(4, 1, 2)
+
+[node name="MaxJumpableDistance" type="CSGBox3D" parent="." unique_id=1841552245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.25, 0)
+material_override = ExtResource("8_gdd0e")
+size = Vector3(5, 0.5, 2)
+
+[node name="Label3D" type="Label3D" parent="MaxJumpableDistance" unique_id=843095122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016811684, 1.0055637)
+text = "Max Jump Distance
+"

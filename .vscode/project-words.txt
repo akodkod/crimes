@@ -1,4 +1,6 @@
 AABB
+borderless
+deadzone
 elif
 fract
 freefly
@@ -8,6 +10,8 @@ hyperkey
 Kodkod
 lerp
 onready
+REBECCA
 reparent
 smoothstep
+snappedf
 xform

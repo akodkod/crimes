@@ -16,5 +16,8 @@
   "godotFormatter.linterMaxLineLength": 120,
   "files.exclude": {
     "**/*.uid": true,
+  },
+  "files.readonlyInclude": {
+    "project.godot": true
   }
 }

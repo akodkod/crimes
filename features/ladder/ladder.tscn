@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cnhf2g3y6nsr2"]
+
+[ext_resource type="Script" uid="uid://dcjjwt7ut6o17" path="res://features/ladder/ladder.gd" id="1_2d7s6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2d7s6"]
+
+[node name="Ladder" type="Node3D" unique_id=460967958]
+script = ExtResource("1_2d7s6")
+
+[node name="RailArea" type="Area3D" parent="." unique_id=1501353577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RailArea" unique_id=1787518013]
+shape = SubResource("BoxShape3D_2d7s6")
+
+[node name="Top" type="Marker3D" parent="." unique_id=398978932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Bottom" type="Marker3D" parent="." unique_id=417877755]

@@ -7,11 +7,16 @@ var current_state: PlayerState
 var ground: PlayerGroundState
 var air: PlayerAirState
 var climb_up: PlayerClimbUpState
+var ladder: PlayerLadderState
 
 
 func _ready() -> void:
 	if owner is not Player:
 		push_error("PlayerStateMachine must be owned by a Player")
+		return
+
+	if not initial_state:
+		push_error("PlayerStateMachine must have an initial state")
 		return
 
 	# Find child states
@@ -23,6 +28,8 @@ func _ready() -> void:
 			air = child
 		elif child is PlayerClimbUpState:
 			climb_up = child
+		elif child is PlayerLadderState:
+			ladder = child
 
 	# Set the initial state
 	if initial_state:
@@ -43,7 +50,6 @@ func _physics_process(delta: float) -> void:
 	var state := current_state
 
 	if not state:
-		print("No current state in PlayerStateMachine")
 		return
 
 	state.process_physics(delta)
@@ -82,6 +88,10 @@ func try_enter_climb_up() -> bool:
 	return _try_enter(climb_up)
 
 
+func try_enter_ladder() -> bool:
+	return _try_enter(ladder)
+
+
 func is_air() -> bool:
 	return current_state == air
 
@@ -92,6 +102,10 @@ func is_ground() -> bool:
 
 func is_climb_up() -> bool:
 	return current_state == climb_up
+
+
+func is_ladder() -> bool:
+	return current_state == ladder
 
 
 var player: Player:

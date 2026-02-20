@@ -82,6 +82,18 @@ func to_climb_up() -> bool:
 	return transition_to(climb_up)
 
 
+func is_air() -> bool:
+	return current_state == air
+
+
+func is_ground() -> bool:
+	return current_state == ground
+
+
+func is_climb_up() -> bool:
+	return current_state == climb_up
+
+
 var player: Player:
 	get:
 		return owner

@@ -1,5 +1,10 @@
 class_name Debugger
 
+enum Area {
+	CHARACTER_MOVEMENT,
+}
+
+
 static func draw_ray_and_collision(
 		query: PhysicsRayQueryParameters3D,
 		collision: Dictionary,
@@ -72,3 +77,7 @@ static func draw_ray_and_collision(
 
 static func draw_sphere(position: Vector3, radius: float, color: Color, duration: float = 1.0) -> void:
 	DebugDraw3D.draw_sphere(position, radius, color, duration)
+
+
+static func log(message: String, _area: Area) -> void:
+	print(message)

@@ -6,16 +6,17 @@ extends PlayerState
 @export var air_deceleration := 5.0
 
 var _jump_direction := Vector3.ZERO
+var _jump_start_position := Vector3.ZERO
 
 
 func on_enter(_previous_state: PlayerState) -> void:
-	# Save jump direction
 	_jump_direction = Vector3(player.velocity.x, 0, player.velocity.z).normalized()
+	_jump_start_position = player.transform.origin
 
 
 func on_exit(_next_state: PlayerState) -> void:
-	# Clear the jump direction
 	_jump_direction = Vector3.ZERO
+	_jump_start_position = Vector3.ZERO
 
 
 func process_physics(delta: float) -> void:
@@ -34,6 +35,18 @@ func process_physics(delta: float) -> void:
 
 	# Apply movement
 	player.move_and_slide()
+
+	print("Distance %s" % get_jump_distance())
+
+	# Check if can enter climbing state
+	state.to_climb_up()
+
+
+func get_jump_distance() -> float:
+	var displacement := player.transform.origin - _jump_start_position
+	displacement.y = 0
+
+	return displacement.length()
 
 
 func _apply_air_control(input_direction: Vector3, delta: float) -> void:

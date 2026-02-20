@@ -14,6 +14,11 @@ func process_physics(delta: float) -> void:
 		state.try_enter_air()
 		return
 
+	# TODO: Start here
+	# if player.wants_to_climb_ladder_up() or player.wants_to_climb_ladder_down():
+		# if state.try_enter_ladder():
+			# return
+
 	# Check if the player wants to jump
 	if player.wants_to_jump():
 		# Try to climb up

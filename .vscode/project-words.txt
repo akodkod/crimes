@@ -9,6 +9,7 @@ fwidth
 hyperkey
 Kodkod
 lerp
+msaa
 onready
 REBECCA
 reparent

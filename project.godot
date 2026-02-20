@@ -110,6 +110,7 @@ move_down={
 
 3d_physics/layer_1="Default"
 3d_physics/layer_2="Climbable"
+3d_physics/layer_3="Ladder"
 
 [physics]
 

@@ -1,11 +1,13 @@
 class_name Ladder
 extends Node3D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func can_mount_from_top(world_position: Vector3) -> bool:
+	return true
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func can_mount_from_bottom(world_position: Vector3) -> bool:
+	return true
+
+
+func can_mount_in_middle(world_position: Vector3) -> bool:
+	return true

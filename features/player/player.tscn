@@ -20,8 +20,13 @@ height = 0.32
 radius = 0.32
 height = 1.5
 
-[node name="Player" type="CharacterBody3D" unique_id=1089198176]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mbft"]
+size = Vector3(2, 1, 2)
+
+[node name="Player" type="CharacterBody3D" unique_id=1089198176 node_paths=PackedStringArray("state", "ladder_detector")]
 script = ExtResource("1_sjcu7")
+state = NodePath("PlayerStateMachine")
+ladder_detector = NodePath("LadderDetector")
 metadata/_custom_type_script = "uid://deob8qyeshx3l"
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=800375553]
@@ -54,3 +59,11 @@ metadata/_custom_type_script = "uid://12h734ckrqwt"
 [node name="PlayerClimbUpState" type="Node" parent="PlayerStateMachine" unique_id=150008184]
 script = ExtResource("7_k34i2")
 metadata/_custom_type_script = "uid://dwxal5wv1l82u"
+
+[node name="LadderDetector" type="Area3D" parent="." unique_id=1558087024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LadderDetector" unique_id=789000789]
+shape = SubResource("BoxShape3D_7mbft")

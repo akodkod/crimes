@@ -31,15 +31,23 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if current_state:
-		current_state.process_frame(delta)
+	var state := current_state
+
+	if not state:
+		return
+
+	state.process_frame(delta)
 
 
 func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.process_physics(delta)
+	var state := current_state
 
-	player.move_and_slide() # TODO: Is this okay to put it here?
+	if not state:
+		print("No current state in PlayerStateMachine")
+		return
+
+	state.process_physics(delta)
+	state.after_process_physics(delta)
 
 
 func transition_to(new_state: PlayerState) -> bool:

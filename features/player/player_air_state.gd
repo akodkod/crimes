@@ -21,6 +21,7 @@ func on_exit(_next_state: PlayerState) -> void:
 func process_physics(delta: float) -> void:
 	# Check if the player has landed
 	if player.is_on_floor():
+		player.move_and_slide()
 		state.to_ground()
 		return
 
@@ -30,6 +31,9 @@ func process_physics(delta: float) -> void:
 	# Handle air control
 	var input_direction := get_input_direction()
 	_apply_air_control(input_direction, delta)
+
+	# Apply movement
+	player.move_and_slide()
 
 
 func _apply_air_control(input_direction: Vector3, delta: float) -> void:

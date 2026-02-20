@@ -31,6 +31,10 @@ func process_physics(_delta: float) -> void:
 	pass
 
 
+func after_process_physics(_delta: float) -> void:
+	pass
+
+
 func get_input_direction() -> Vector3:
 	# Get the input direction
 	var input_direction := Input.get_vector(

@@ -32,6 +32,10 @@ func process_physics(delta: float) -> void:
 	_rotate_towards_movement(input_direction, delta)
 
 
+func after_process_physics(_delta: float) -> void:
+	player.move_and_slide()
+
+
 func _apply_velocity(input_direction: Vector3, delta: float) -> void:
 	if input_direction:
 		player.velocity.x = move_toward(

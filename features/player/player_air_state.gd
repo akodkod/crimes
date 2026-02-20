@@ -23,7 +23,7 @@ func process_physics(delta: float) -> void:
 	# Check if the player has landed
 	if player.is_on_floor():
 		player.move_and_slide()
-		state.to_ground()
+		state.try_enter_ground()
 		return
 
 	# Apply gravity
@@ -36,10 +36,8 @@ func process_physics(delta: float) -> void:
 	# Apply movement
 	player.move_and_slide()
 
-	print("Distance %s" % get_jump_distance())
-
 	# Check if can enter climbing state
-	state.to_climb_up()
+	state.try_enter_climb_up()
 
 
 func get_jump_distance() -> float:

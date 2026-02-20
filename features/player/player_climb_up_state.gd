@@ -1,6 +1,8 @@
 class_name PlayerClimbUpState
 extends PlayerState
 
+# TODO: Check dot product of the forward and upward ray
+
 var climb_up_from_ground_min_height := 0.3
 var climb_up_from_ground_max_height := 2.0
 var climb_up_from_air_max_height := 1.5 # height of the body
@@ -132,6 +134,6 @@ func _exit_climb_up_state() -> void:
 	_climb_up_target_point = Vector3.ZERO
 
 	if player.is_on_floor():
-		state.to_ground()
+		state.try_enter_ground()
 	else:
-		state.to_air()
+		state.try_enter_air()

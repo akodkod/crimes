@@ -11,19 +11,19 @@ extends PlayerState
 func process_physics(delta: float) -> void:
 	# Check if the player has left the ground (e.g., walked off a ledge)
 	if not player.is_on_floor():
-		state.to_air()
+		state.try_enter_air()
 		return
 
 	# Check if the player wants to jump
 	if player.wants_to_jump():
 		# Try to climb up
-		if state.to_climb_up():
+		if state.try_enter_climb_up():
 			return
 
 		# Jump if climbing up is not possible
 		player.velocity.y = jump_velocity
 
-		state.to_air()
+		state.try_enter_air()
 		return
 
 	# Handle player movement

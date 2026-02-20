@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	state.after_process_physics(delta)
 
 
-func transition_to(new_state: PlayerState) -> bool:
+func _try_enter(new_state: PlayerState) -> bool:
 	if new_state == current_state:
 		return false
 
@@ -70,16 +70,16 @@ func transition_to(new_state: PlayerState) -> bool:
 	return true
 
 
-func to_air() -> bool:
-	return transition_to(air)
+func try_enter_air() -> bool:
+	return _try_enter(air)
 
 
-func to_ground() -> bool:
-	return transition_to(ground)
+func try_enter_ground() -> bool:
+	return _try_enter(ground)
 
 
-func to_climb_up() -> bool:
-	return transition_to(climb_up)
+func try_enter_climb_up() -> bool:
+	return _try_enter(climb_up)
 
 
 func is_air() -> bool:
